@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Anurag Affection </string>
+    <string name="hello">Hello World  </string>
+    <string name="anu"> Anurag Affection </string>
+    <string name="next">More Info</string>
+    <string name="result">Result of Bundle Passing</string>
+    <string name="wlcmText">Welcome To Anurag Affection</string>
+    <string name="javaDsa">Java DSA Practise </string>
+    <string name="javaSln">Hacker Rank Java Solution</string>
+    <string name="javaDsaSln">Hacker Rank Data Structure</string>
+    <string name="javaDsaSln2">Hacker Rank Algorithm</string>
+    <string name="anim">Android Animations</string>
+    <string name="txtAnu">Anurag Affection</string>
+    <string name="btnTranslate">Translate Animation</string>
+    <string name="btnAlpha">Alpha Transition</string>
+    <string name="btnRotate">Rotate Animations</string>
+    <string name="btnScale">Scale Animations</string>
+    <string name="lottie">Lottie Animations</string>
+    <string name="txtLottie">About Lottie Animations</string>
+    <string name="txtSpinner">Select an ID Proof</string>
+    <string name="btnListView">List  View</string>
+    <string name="search">Search Programming Languages</string>
+</resources>

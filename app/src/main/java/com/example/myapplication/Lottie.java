@@ -12,8 +12,7 @@ public class Lottie extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lottie);
 
-        TextView txtLottie;
-        txtLottie = findViewById(R.id.txtLottie);
+        TextView txtLottie = findViewById(R.id.txtLottie);
 
 
 

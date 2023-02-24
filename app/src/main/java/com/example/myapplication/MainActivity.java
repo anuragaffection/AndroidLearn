@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
             Intent iNext;
             // intent creation or initialisation
 
-            iNext = new Intent(MainActivity.this, MainActivity2.class);
+            iNext = new Intent(MainActivity.this, ListLearn.class);
             // intent creation and passing
 
             // bundle passing always in between intent creation and intent start.

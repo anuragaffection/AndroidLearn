@@ -48,7 +48,8 @@
             android:layout_margin="10sp"
             android:backgroundTint="@color/teal_200"
             android:padding="8sp"
-            android:text="@string/btnAlpha" />
+            android:text="@string/btnAlpha"
+            android:textColor="#5E35B1" />
 
         <Button
             android:id="@+id/btnScale"
@@ -66,7 +67,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="10sp"
             android:backgroundTint="@color/teal_200"
-            android:text="@string/btnRotate" />
+            android:text="@string/btnRotate"
+            android:textColor="#5E35B1" />
 
 
     </LinearLayout>

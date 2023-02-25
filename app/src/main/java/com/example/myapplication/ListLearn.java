@@ -1,18 +1,29 @@
 package com.example.myapplication;
 
+import static android.widget.Toast.*;
+
+
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
+
+import android.app.AlertDialog;
 
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
+
 public class ListLearn extends AppCompatActivity {
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,11 +46,11 @@ public class ListLearn extends AppCompatActivity {
         arrNames.add("06 - Recycler View ");
         arrNames.add("07 - App Bar ");
         arrNames.add("08 - Drawable Learn ");
-        arrNames.add("Raman");
-        arrNames.add("Ramanujan");
-        arrNames.add("Rakesh");
-        arrNames.add("Radha");
-        arrNames.add("Radhika");
+        arrNames.add("09 - Simple Toast ");
+        arrNames.add("10 - Customize Toast ");
+        arrNames.add("11 - Simple Alert Dialog Box " );
+        arrNames.add("12 - Double Alert Dialog Box ");
+        arrNames.add("13 - Triple Button Dialog Box ");
         arrNames.add("Rekha");
         arrNames.add("Tamika");
         arrNames.add("Ram");
@@ -48,21 +59,12 @@ public class ListLearn extends AppCompatActivity {
         arrNames.add("Rakesh");
         arrNames.add("Radha");
         arrNames.add("Radhika");
-        arrNames.add("Rekha");
-        arrNames.add("Tamika");
-        arrNames.add("Ram");
-        arrNames.add("Raman");
-        arrNames.add("Ramanujan");
-        arrNames.add("Rakesh");
-        arrNames.add("Radha");
-        arrNames.add("Radhika");
-        arrNames.add("Rekha");
-        arrNames.add("Tamika");
 
 
-        ArrayAdapter<String> listadapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, arrNames);
 
-        listView1.setAdapter(listadapter);
+        ArrayAdapter<String> listAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, arrNames);
+
+        listView1.setAdapter(listAdapter);
 
 
         listView1.setOnItemClickListener((adapterView, view, i, l) -> {
@@ -72,7 +74,7 @@ public class ListLearn extends AppCompatActivity {
             // long l = time taken on clicking view
 
             if (i == 0){
-                Toast.makeText(ListLearn.this, "Clicked AA = Anurag Affection ",Toast.LENGTH_LONG).show();
+                Toast.makeText(ListLearn.this, "Clicked AA = Anurag Affection ", LENGTH_LONG).show();
             }
             else if (i==1){
                 Intent iAnu;
@@ -109,6 +111,75 @@ public class ListLearn extends AppCompatActivity {
                 iDraw = new Intent(ListLearn.this, DrawableLearn.class);
                 startActivity(iDraw);
             }
+            else if (i == 9){
+                makeText(getApplicationContext(), "Simple Toast ", LENGTH_LONG).show();
+            }
+            else if (i == 10){
+                Toast toast = new Toast(getApplicationContext());
+                View view2 = getLayoutInflater().inflate(R.layout.custom_toast, findViewById(R.id.clView));
+                toast.setView(view2);
+
+                String txtMessage = "Message Sent Successfully! ";
+                TextView txtMe;
+                txtMe = view2.findViewById(R.id.txtMe);
+                txtMe.setText(txtMessage);
+
+                toast.setDuration(LENGTH_LONG);
+                toast.show();
+            }
+
+            else if (i == 11){
+                AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+
+                alertDialog.setTitle("Terms & condition");
+                alertDialog.setIcon(R.drawable.baseline_info_24);
+                alertDialog.setMessage("Have You read all the T & C ");
+
+                alertDialog.setButton("Yes, I have read ", (dialogInterface, i1) ->
+                        Toast.makeText(ListLearn.this, "Yes you can proceed ", Toast.LENGTH_LONG).show());
+
+                alertDialog.show();
+            }
+
+            else if (i == 12){
+                AlertDialog.Builder delDialog = new AlertDialog.Builder(ListLearn.this);
+
+                delDialog.setTitle("Delete");
+                delDialog.setIcon(R.drawable.baseline_delete_24);
+                delDialog.setMessage("Are You sure want to delete ? ");
+
+                delDialog.setPositiveButton("Yes", (dialogInterface, i16) ->
+                        Toast.makeText(ListLearn.this, "Deleted", LENGTH_LONG).show());
+
+                delDialog.setNeutralButton("No", (dialogInterface, i12) ->
+                        Toast.makeText(ListLearn.this, "Item Not deleted", LENGTH_LONG).show());
+
+                delDialog.show();
+            }
+
+            else if (i == 13) {
+                AlertDialog.Builder extDialog = new AlertDialog.Builder(ListLearn.this);
+
+                extDialog.setTitle("Exist ?");
+                extDialog.setMessage("Are You sure want to exist ? ");
+                extDialog.setIcon(R.drawable.baseline_exit_to_app_24);
+
+                extDialog.setPositiveButton("Yes", (dialogInterface, i15) -> {
+                   Intent iMain;
+                   iMain = new Intent(ListLearn.this, MainActivity.class);
+                   startActivity(iMain);
+                });
+
+                extDialog.setNegativeButton("No", (dialogInterface, i13) ->
+                        Toast.makeText(ListLearn.this, "Welcome Back ", LENGTH_LONG).show());
+
+                extDialog.setNeutralButton("Cancel", (dialogInterface, i14) ->
+                        Toast.makeText(ListLearn.this, "Cancelled", LENGTH_LONG).show());
+
+                extDialog.show();
+            }
+
+
 
         });
 

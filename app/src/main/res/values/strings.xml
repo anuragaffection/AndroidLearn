@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Anurag Affection </string>
     <string name="hello">Hello World  </string>
+    <string name="aa">A A </string>
     <string name="anu"> Anurag Affection </string>
     <string name="next">More Info</string>
     <string name="result">Result of Bundle Passing</string>
@@ -33,4 +34,7 @@
     <string name="opt_contact">Contact</string>
     <string name="opt_delete">Delete</string>
     <string name="opt_save">Save</string>
+    <string name="confirm">Confirm</string>
+    <string name="txtMe">Text Message </string>
+    <string name="proceed">\"Yes, You can proceed now \"</string>
 </resources>

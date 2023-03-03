@@ -4,24 +4,39 @@ import static android.widget.Toast.*;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 import android.annotation.SuppressLint;
 
 import android.app.AlertDialog;
 
+import android.app.Dialog;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 
 public class ListLearn extends AppCompatActivity {
+
+
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -51,14 +66,17 @@ public class ListLearn extends AppCompatActivity {
         arrNames.add("11 - Simple Alert Dialog Box " );
         arrNames.add("12 - Double Alert Dialog Box ");
         arrNames.add("13 - Triple Button Dialog Box ");
-        arrNames.add("Rekha");
-        arrNames.add("Tamika");
-        arrNames.add("Ram");
-        arrNames.add("Raman");
-        arrNames.add("Ramanujan");
-        arrNames.add("Rakesh");
-        arrNames.add("Radha");
-        arrNames.add("Radhika");
+        arrNames.add("14 - Custom Dialog Box ");
+        arrNames.add("15 - Simple Notification ");
+        arrNames.add("16 - Customize Notification Big Picture ");
+        arrNames.add("17 - Customize Notification Inbox Text ");
+        arrNames.add("18 - Call me ");
+        arrNames.add("19 - Message me ");
+        arrNames.add("20 - Mail me ");
+        arrNames.add("21 - Share Button ");
+        arrNames.add("22 - Static Frame");
+        arrNames.add("23 - Dynamic Frame ");
+        arrNames.add("24 - Tab ");
 
 
 
@@ -115,13 +133,16 @@ public class ListLearn extends AppCompatActivity {
                 makeText(getApplicationContext(), "Simple Toast ", LENGTH_LONG).show();
             }
             else if (i == 10){
+
                 Toast toast = new Toast(getApplicationContext());
                 View view2 = getLayoutInflater().inflate(R.layout.custom_toast, findViewById(R.id.clView));
                 toast.setView(view2);
 
                 String txtMessage = "Message Sent Successfully! ";
+
                 TextView txtMe;
                 txtMe = view2.findViewById(R.id.txtMe);
+
                 txtMe.setText(txtMessage);
 
                 toast.setDuration(LENGTH_LONG);
@@ -129,6 +150,7 @@ public class ListLearn extends AppCompatActivity {
             }
 
             else if (i == 11){
+
                 AlertDialog alertDialog = new AlertDialog.Builder(this).create();
 
                 alertDialog.setTitle("Terms & condition");
@@ -142,6 +164,7 @@ public class ListLearn extends AppCompatActivity {
             }
 
             else if (i == 12){
+
                 AlertDialog.Builder delDialog = new AlertDialog.Builder(ListLearn.this);
 
                 delDialog.setTitle("Delete");
@@ -158,6 +181,7 @@ public class ListLearn extends AppCompatActivity {
             }
 
             else if (i == 13) {
+
                 AlertDialog.Builder extDialog = new AlertDialog.Builder(ListLearn.this);
 
                 extDialog.setTitle("Exist ?");
@@ -179,7 +203,228 @@ public class ListLearn extends AppCompatActivity {
                 extDialog.show();
             }
 
+            else if (i == 14){
 
+                Dialog dialog = new Dialog(ListLearn.this);
+                dialog.setContentView(R.layout.custom_dialog_box);
+                dialog.setCancelable(false);
+
+                Button btnOkay = dialog.findViewById(R.id.btnOkay);
+
+                btnOkay.setOnClickListener(view1 -> {
+                        Toast.makeText(ListLearn.this, "Closed", LENGTH_LONG).show();
+                        dialog.dismiss();
+                });
+
+                dialog.show();
+            }
+
+            else if ( i == 15){
+
+                final String CHANNEL_ID = "My Channel";
+                final int NOTIFICATION_ID = 100;
+
+                Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.mobile_development, null);
+
+                BitmapDrawable bitmapDrawable = (BitmapDrawable) drawable;
+
+                assert bitmapDrawable != null;
+                Bitmap largeIcon = bitmapDrawable.getBitmap();
+
+                NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+
+                Notification notification;
+
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+
+                    notification = new Notification.Builder(ListLearn.this)
+                            .setLargeIcon(largeIcon)
+                            .setSmallIcon(R.drawable.mobile_development)
+                            .setContentText("In order to be irreplaceable, one must always be different! ")
+                            .setSubText("New Message from Anurag Affection")
+                            .setChannelId(CHANNEL_ID)
+                            .build();
+
+                    nm.createNotificationChannel(new NotificationChannel(CHANNEL_ID, "New Channel", NotificationManager.IMPORTANCE_HIGH));
+                }
+                else {
+                    notification = new Notification.Builder(ListLearn.this)
+                            .setLargeIcon(largeIcon)
+                            .setSmallIcon(R.drawable.mobile_development)
+                            .setContentText("In order to be irreplaceable, one must always be different! ")
+                            .setSubText("New Message from Anurag Affection")
+                            .build();
+                }
+                nm.notify(NOTIFICATION_ID, notification);
+
+            }
+
+            else if ( i == 16){
+
+                final String CHANNEL_ID = "My Channel";
+                final int NOTIFICATION_ID = 100;
+                final int REQ_CODE = 105;
+
+                Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.mobile_development, null);
+
+                BitmapDrawable bitmapDrawable = (BitmapDrawable) drawable;
+
+                assert bitmapDrawable != null;
+                Bitmap largeIcon = bitmapDrawable.getBitmap();
+
+                NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+
+                Notification notification;
+
+                Intent iNotify = new Intent(getApplicationContext(), MainActivity.class);
+                iNotify.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+                PendingIntent pendingIntent = PendingIntent.getActivity(ListLearn.this, REQ_CODE, iNotify , PendingIntent.FLAG_UPDATE_CURRENT );
+
+                Notification.BigPictureStyle bigPictureStyle = new Notification.BigPictureStyle()
+                        .bigPicture(((BitmapDrawable) (Objects.requireNonNull(ResourcesCompat.getDrawable(getResources(), R.drawable.anuragaffection, null)))).getBitmap())
+                        .bigLargeIcon(largeIcon)
+                        .setBigContentTitle("Image sent By Anurag Affection ")
+                        .setSummaryText("Image Message ");
+
+
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+
+                    notification = new Notification.Builder(ListLearn.this)
+                            .setLargeIcon(largeIcon)
+                            .setSmallIcon(R.drawable.mobile_development)
+                            .setContentText("In order to be irreplaceable, one must always be different! ")
+                            .setSubText("New Message from Anurag Affection")
+                            .setContentIntent(pendingIntent)
+                            .setStyle(bigPictureStyle)
+                            .setChannelId(CHANNEL_ID)
+                            .build();
+
+                    nm.createNotificationChannel(new NotificationChannel(CHANNEL_ID, "New Channel", NotificationManager.IMPORTANCE_HIGH));
+                }
+                else {
+                    notification = new Notification.Builder(ListLearn.this)
+                            .setLargeIcon(largeIcon)
+                            .setSmallIcon(R.drawable.mobile_development)
+                            .setContentText("In order to be irreplaceable, one must always be different! ")
+                            .setSubText("New Message from Anurag Affection")
+                            .setContentIntent(pendingIntent)
+                            .setStyle(bigPictureStyle)
+                            .build();
+                }
+                nm.notify(NOTIFICATION_ID, notification);
+
+            }
+
+            else if ( i == 17){
+
+                final String CHANNEL_ID = "My Channel";
+                final int NOTIFICATION_ID = 100;
+                final int REQ_CODE = 105;
+
+                Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.mobile_development, null);
+
+                BitmapDrawable bitmapDrawable = (BitmapDrawable) drawable;
+
+                assert bitmapDrawable != null;
+                Bitmap largeIcon = bitmapDrawable.getBitmap();
+
+                NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+
+                Notification notification;
+
+                Intent iNotify = new Intent(getApplicationContext(), MainActivity.class);
+                iNotify.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+                PendingIntent pendingIntent = PendingIntent.getActivity(ListLearn.this, REQ_CODE, iNotify , PendingIntent.FLAG_UPDATE_CURRENT );
+
+                Notification.InboxStyle inboxStyle = new Notification.InboxStyle()
+                        .addLine("Anurag Affection")
+                        .addLine("Steve Rogers ")
+                        .addLine("Captain America ")
+                        .addLine("Team Cap ")
+                        .addLine("Natasha RomanOff")
+                        .addLine("Jane Foster ")
+                        .addLine("Tony Stark")
+                        .addLine("Peter Parker ")
+                        .setBigContentTitle("Some name from Avengers ")
+                        .setSummaryText("Avengers ");
+
+
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+
+                    notification = new Notification.Builder(ListLearn.this)
+                            .setLargeIcon(largeIcon)
+                            .setSmallIcon(R.drawable.mobile_development)
+                            .setContentText("In order to be irreplaceable, one must always be different! ")
+                            .setSubText("New Message from Anurag Affection")
+                            .setContentIntent(pendingIntent)
+                            .setStyle(inboxStyle)
+                            .setChannelId(CHANNEL_ID)
+                            .build();
+
+                    nm.createNotificationChannel(new NotificationChannel(CHANNEL_ID, "New Channel", NotificationManager.IMPORTANCE_HIGH));
+                }
+                else {
+                    notification = new Notification.Builder(ListLearn.this)
+                            .setLargeIcon(largeIcon)
+                            .setSmallIcon(R.drawable.mobile_development)
+                            .setContentText("In order to be irreplaceable, one must always be different! ")
+                            .setSubText("New Message from Anurag Affection")
+                            .setContentIntent(pendingIntent)
+                            .setStyle(inboxStyle)
+                            .build();
+                }
+                nm.notify(NOTIFICATION_ID, notification);
+            }
+
+            else if ( i == 18 ){
+                Intent iDial = new Intent(Intent.ACTION_DIAL);
+                iDial.setData(Uri.parse("tel: +918294515714"));
+                startActivity(iDial);
+            }
+
+            else if ( i == 19 ){
+                Intent iMsg = new Intent(Intent.ACTION_SENDTO);
+                iMsg.setData(Uri.parse("sms to:" + Uri.encode("+918294515714")));
+                iMsg.putExtra("Anurag ", "I am open to work");
+                startActivity(iMsg);
+
+            }
+
+            else if (i == 20 ){
+                Intent iMail = new Intent(Intent.ACTION_SEND);
+                iMail.setType("message / rfc822 ");
+                iMail.putExtra(Intent.EXTRA_EMAIL, new String[]{"anuragaffection07@gmail.com"});
+                iMail.putExtra(Intent.EXTRA_SUBJECT, "Regarding Android Development ");
+                iMail.putExtra(Intent.EXTRA_TEXT, "Freshers Jobs in Android Development ");
+                startActivity(Intent.createChooser(iMail, "Mail via "));
+            }
+
+            else if ( i == 21 ){
+                Intent iShare = new Intent(Intent.ACTION_SEND);
+                iShare.setType("plain/text");
+                iShare.putExtra(Intent.EXTRA_TEXT, "Share this app, https://www.youtube.com/@AnuragAffection");
+                startActivity(Intent.createChooser(iShare, "Share via "));
+            }
+
+            else if ( i == 22){
+                Intent iStatic;
+                iStatic = new Intent(ListLearn.this, StaticFrame.class);
+                startActivity(iStatic);
+            }
+
+            else if ( i == 23 ){
+                Intent iDynamic;
+                iDynamic = new Intent(ListLearn.this, DynamicFrame.class);
+                startActivity(iDynamic);
+            }
+
+            else if ( i == 24){
+                Intent iTab;
+                iTab = new Intent(ListLearn.this, TabLearn.class);
+                startActivity(iTab);
+            }
 
         });
 

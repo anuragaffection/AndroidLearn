@@ -37,4 +37,17 @@
     <string name="confirm">Confirm</string>
     <string name="txtMe">Text Message </string>
     <string name="proceed">\"Yes, You can proceed now \"</string>
+    <string name="success">Success</string>
+    <string name="order">Your order has been placed</string>
+    <string name="okay">Okay</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="FragA">FragA</string>
+    <string name="FragB">FragB</string>
+    <string name="FragC">FragC</string>
+    <string name="home">Home</string>
+    <string name="profile">My Profile</string>
+    <string name="utility">Utlility</string>
+    <string name="nav_search">Search</string>
+    <string name="contactUs">Contact</string>
 </resources>

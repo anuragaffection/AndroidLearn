@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -18,12 +19,18 @@ public class FragmentAnu extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_anu, container, false);
+        TextView txtCard1 = null;
 
-        TextView txtCard1 = view.findViewById(R.id.txtCard1);
+        if (getArguments()!= null){
+            String name = getArguments().getString("Arg1");
+            int roll = getArguments().getInt("Arg2");
+            assert false;
+            txtCard1.setText(name + " " + roll);
+        }
 
-        return view;
+
+        return inflater.inflate(R.layout.fragment_anu, container, false);
     }
 }

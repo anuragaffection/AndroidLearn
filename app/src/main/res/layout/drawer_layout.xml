@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="15dp"
+    android:background="@drawable/custom_btn"
+    >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/anuragaffection"
+        android:contentDescription="@string/anu"
+        android:id="@+id/imgViewD"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtViewD"
+        android:text="@string/anu"
+        android:textStyle="bold"
+        android:textSize="24dp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/imgViewD"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtViewD2"
+        android:text="@string/anuEmail"
+        android:textStyle="bold"
+        android:textSize="14dp"
+        android:layout_marginStart="4dp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/txtViewD"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

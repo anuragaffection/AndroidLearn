@@ -47,7 +47,11 @@
     <string name="FragC">FragC</string>
     <string name="home">Home</string>
     <string name="profile">My Profile</string>
-    <string name="utility">Utlility</string>
+    <string name="utility">Utility</string>
     <string name="nav_search">Search</string>
     <string name="contactUs">Contact</string>
+    <string name="anuEmail">anuragaffection07@gmail.com</string>
+    <string name="openDrawer">Open Drawer Navigation</string>
+    <string name="closeDrawer">Close Drawer Navigation</string>
+    <string name="title_activity_google_map_learn">googleMapLearn</string>
 </resources>

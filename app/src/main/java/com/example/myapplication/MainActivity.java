@@ -87,9 +87,9 @@ public class MainActivity extends AppCompatActivity {
                 loadFrag(new FragmentAffection(), true);
             }
             else if ( id == R.id.nav_profile){
-                Intent iList;
-                iList = new Intent(MainActivity.this, ListLearn.class);
-                startActivity(iList);
+                Intent iHome;
+                iHome = new Intent(MainActivity.this, MainActivity.class);
+                startActivity(iHome);
             }
             else if (id == R.id.nav_utility){
                 Intent iLottie;
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                 loadFrag(new FragmentKumar(), false);
             }
 
-            return false;
+            return true;
 
         });
         bottomNV.setSelectedItemId(R.id.nav_profile);

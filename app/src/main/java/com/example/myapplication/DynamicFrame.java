@@ -10,6 +10,7 @@ import android.widget.Button;
 
 public class DynamicFrame extends AppCompatActivity {
 
+    private static final String ROOT_FRAGMENT_TAG = "anu";
     Button btnFragA, btnFragB, btnFragC;
 
     @Override
@@ -25,7 +26,7 @@ public class DynamicFrame extends AppCompatActivity {
 
         btnFragA.setOnClickListener(view -> loadFrag(new FragmentAnu(),1));
 
-        btnFragB.setOnClickListener(view -> loadFrag(new FragmentKumar(),1));
+        btnFragB.setOnClickListener(view -> loadFrag( FragmentKumar.getInstance("Affection", 11),1));
 
         btnFragC.setOnClickListener(view -> loadFrag(new FragmentAffection(),1));
 
@@ -35,12 +36,22 @@ public class DynamicFrame extends AppCompatActivity {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
 
+        Bundle bundle = new Bundle();
+        bundle.putString("Arg1", "Anurag");
+        bundle.putInt("Arg2", 18);
+
+        fragment.setArguments(bundle);
+
         if (flag == 0){
             ft.add(R.id.container1, fragment);
+            fm.popBackStack(ROOT_FRAGMENT_TAG, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            ft.addToBackStack(ROOT_FRAGMENT_TAG);
         }
         else {
             ft.replace(R.id.container1, fragment);
+            ft.addToBackStack(null);
         }
+
 
         ft.commit();
     }

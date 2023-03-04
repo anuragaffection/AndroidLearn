@@ -14,14 +14,19 @@
         app:layout_constraintRight_toRightOf="parent"
         >
 
-    <androidx.appcompat.widget.Toolbar
-        android:layout_width = "match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/toolbar"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        />
+       <androidx.appcompat.widget.Toolbar
+          android:layout_width = "match_parent"
+          android:layout_height="wrap_content"
+          android:id="@+id/toolbar"
+          app:layout_constraintTop_toTopOf="parent"
+          app:layout_constraintRight_toRightOf="parent"
+          />
 
     </com.google.android.material.appbar.AppBarLayout>
+
+    <include layout="@layout/activity_main"
+        android:layout_marginTop="56dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

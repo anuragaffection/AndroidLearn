@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -32,7 +33,7 @@ public class DynamicFrame extends AppCompatActivity {
 
     }
 
-    public void loadFrag (Fragment fragment, int flag){
+    public void loadFrag (@NonNull Fragment fragment, int flag){
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
 

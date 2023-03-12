@@ -1,26 +1,26 @@
 package com.example.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.Objects;
 
 public class DrawerNavigation extends AppCompatActivity {
 
     DrawerLayout drawerNavigation;
     NavigationView navigationView;
-    Toolbar toolbar;
+    // Toolbar toolbar;
 
 
     @SuppressLint("MissingInflatedId")
@@ -31,23 +31,28 @@ public class DrawerNavigation extends AppCompatActivity {
 
         drawerNavigation = findViewById(R.id.drawerNavigation);
         navigationView = findViewById(R.id.navigationView);
-        toolbar = findViewById(R.id.toolbar);
 
-        setSupportActionBar(toolbar);
+        //  toolbar = findViewById(R.id.toolbar);
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerNavigation, toolbar, R.string.openDrawer, R.string.closeDrawer);
+        // setSupportActionBar(toolbar);
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerNavigation, R.string.openDrawer, R.string.closeDrawer);
 
         drawerNavigation.addDrawerListener(toggle);
         toggle.syncState();
+
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         navigationView.setNavigationItemSelectedListener(item -> {
             int id = item.getItemId();
 
             if (id == R.id.nav_home){
-                loadFrag(new FragmentAnu(), true);
+                Intent iList;
+                iList = new Intent(DrawerNavigation.this, ListLearn.class);
+                startActivity(iList);
             }
             else if (id == R.id.nav_search){
-                loadFrag(new FragmentAffection(), true);
+                Toast.makeText(getApplicationContext(), "Clicked Search", Toast.LENGTH_LONG).show();
             }
             else if ( id == R.id.nav_profile){
                 Intent iHome;
@@ -60,10 +65,11 @@ public class DrawerNavigation extends AppCompatActivity {
                 startActivity(iLottie);
             }
             else {
-                loadFrag(new FragmentKumar(), false);
+                Toast.makeText(getApplicationContext(), "Clicked ", Toast.LENGTH_LONG).show();
             }
 
             drawerNavigation.closeDrawer(GravityCompat.START);
+
             return true;
         });
 
@@ -80,11 +86,15 @@ public class DrawerNavigation extends AppCompatActivity {
 
     }
 
-    public void loadFrag (Fragment fragment, boolean flag){
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
-        ft.add(R.id.containerNav, fragment);
-        ft.commit();
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerNavigation, R.string.openDrawer, R.string.closeDrawer);
+
+        if (toggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

@@ -77,6 +77,8 @@ public class ListLearn extends AppCompatActivity {
         arrNames.add("22 - Static Frame");
         arrNames.add("23 - Dynamic Frame ");
         arrNames.add("24 - Tab ");
+        arrNames.add("25 - Drawer");
+        arrNames.add("26 - Gaya College Gaya ");
 
 
 
@@ -424,6 +426,18 @@ public class ListLearn extends AppCompatActivity {
                 Intent iTab;
                 iTab = new Intent(ListLearn.this, TabLearn.class);
                 startActivity(iTab);
+            }
+
+            else if (i == 25){
+                Intent iDrawer;
+                iDrawer = new Intent(ListLearn.this,DrawerNavigation.class);
+                startActivity(iDrawer);
+            }
+
+            else if (i == 26){
+                Intent iGCG;
+                iGCG = new Intent(ListLearn.this, GayaCollegeGaya.class);
+                startActivity(iGCG);
             }
 
         });

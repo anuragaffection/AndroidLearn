@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
             }
             else if ( id == R.id.nav_profile){
                 Intent iHome;
-                iHome = new Intent(MainActivity.this, MainActivity.class);
+                iHome = new Intent(MainActivity.this, ListLearn.class);
                 startActivity(iHome);
             }
             else if (id == R.id.nav_utility){

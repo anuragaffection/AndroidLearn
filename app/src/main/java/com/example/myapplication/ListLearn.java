@@ -1,27 +1,22 @@
 package com.example.myapplication;
 
-import static android.widget.Toast.*;
-
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.res.ResourcesCompat;
+import static android.widget.Toast.LENGTH_LONG;
+import static android.widget.Toast.makeText;
 
 import android.annotation.SuppressLint;
-
 import android.app.AlertDialog;
-
 import android.app.Dialog;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -29,8 +24,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
+
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 
@@ -79,6 +76,7 @@ public class ListLearn extends AppCompatActivity {
         arrNames.add("24 - Tab ");
         arrNames.add("25 - Drawer");
         arrNames.add("26 - Gaya College Gaya ");
+        arrNames.add("27 - Logout from Application ");
 
 
 
@@ -438,6 +436,18 @@ public class ListLearn extends AppCompatActivity {
                 Intent iGCG;
                 iGCG = new Intent(ListLearn.this, GayaCollegeGaya.class);
                 startActivity(iGCG);
+            }
+
+            else if ( i == 27){
+                SharedPreferences pref = getSharedPreferences("login", MODE_PRIVATE);
+                SharedPreferences.Editor editor = pref.edit();
+
+                editor.putBoolean("flag", false);
+                editor.apply();
+
+                Intent iLogin = new Intent(ListLearn.this, LoginPage.class);
+                startActivity(iLogin);
+                finishAffinity();
             }
 
         });

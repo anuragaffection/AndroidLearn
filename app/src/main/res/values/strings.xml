@@ -54,4 +54,5 @@
     <string name="openDrawer">Open Drawer Navigation</string>
     <string name="closeDrawer">Close Drawer Navigation</string>
     <string name="title_activity_google_map_learn">googleMapLearn</string>
+    <string name="login">"Login Here "</string>
 </resources>

@@ -3,6 +3,8 @@ package com.example.myapplication;
 import static android.widget.Toast.LENGTH_LONG;
 import static android.widget.Toast.makeText;
 
+import static com.example.myapplication.R.layout.camera_gallery;
+
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -17,13 +19,16 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
@@ -32,7 +37,6 @@ import java.util.Objects;
 
 
 public class ListLearn extends AppCompatActivity {
-
 
 
     @SuppressLint("MissingInflatedId")
@@ -77,6 +81,8 @@ public class ListLearn extends AppCompatActivity {
         arrNames.add("25 - Drawer");
         arrNames.add("26 - Gaya College Gaya ");
         arrNames.add("27 - Logout from Application ");
+        arrNames.add("28 - Take picture from Camera ");
+        arrNames.add("29 - Take picture from Gallery");
 
 
 
@@ -450,8 +456,27 @@ public class ListLearn extends AppCompatActivity {
                 finishAffinity();
             }
 
+            else if ( i == 28 ){
+                Intent iPicture = new Intent(ListLearn.this, TakingPicture.class);
+                startActivity(iPicture);
+
+            }
+
+            else if ( i == 29 ){
+
+                Intent iGalleryPick = new Intent(ListLearn.this, GalleryPick.class);
+                startActivity(iGalleryPick);
+
+            }
+
         });
 
 
     }
+
+
+
+
+
+
 }

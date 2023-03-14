@@ -55,4 +55,7 @@
     <string name="closeDrawer">Close Drawer Navigation</string>
     <string name="title_activity_google_map_learn">googleMapLearn</string>
     <string name="login">"Login Here "</string>
+    <string name="pause">Pause</string>
+    <string name="stop">Stop</string>
+    <string name="play">Play</string>
 </resources>

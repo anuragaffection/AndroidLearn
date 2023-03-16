@@ -30,7 +30,8 @@ public class AudioPlayer extends AppCompatActivity {
 
         mp.setAudioStreamType(AudioManager.STREAM_MUSIC);
 
-        String audioPath = "android.resource://" + getPackageName() + "raw/song_a";
+        //String audioPath = "android.resource://" + getPackageName() + "raw/song_a";
+        String audioPath = "https://www.jiosaavn.com/featured/lets-play---yo-yo-honey-singh/2G5FSf,-XaM_";
 
         Uri audioUri = Uri.parse(audioPath);
 
@@ -38,7 +39,7 @@ public class AudioPlayer extends AppCompatActivity {
             mp.setDataSource(this, audioUri);
             mp.prepare();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
 
 

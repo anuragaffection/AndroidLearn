@@ -3,7 +3,7 @@ package com.example.myapplication;
 import static android.widget.Toast.LENGTH_LONG;
 import static android.widget.Toast.makeText;
 
-import static com.example.myapplication.R.layout.camera_gallery;
+
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -19,16 +19,16 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
+
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
+
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
@@ -83,6 +83,10 @@ public class ListLearn extends AppCompatActivity {
         arrNames.add("27 - Logout from Application ");
         arrNames.add("28 - Take picture from Camera ");
         arrNames.add("29 - Take picture from Gallery");
+        arrNames.add("30 - Audio Player ");
+        arrNames.add("31 - Video Player ");
+        arrNames.add("32 - More ");
+        arrNames.add("33 - More info ");
 
 
 
@@ -467,6 +471,16 @@ public class ListLearn extends AppCompatActivity {
                 Intent iGalleryPick = new Intent(ListLearn.this, GalleryPick.class);
                 startActivity(iGalleryPick);
 
+            }
+
+            else if ( i == 30 ){
+                Intent iAudio = new Intent(ListLearn.this, AudioPlayer.class);
+                startActivity(iAudio);
+            }
+
+            else if ( i == 31 ){
+                Intent iVideo = new Intent(ListLearn.this, VideoPlayer.class);
+                startActivity(iVideo);
             }
 
         });

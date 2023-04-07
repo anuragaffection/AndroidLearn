@@ -87,6 +87,7 @@ public class ListLearn extends AppCompatActivity {
         arrNames.add("31 - Video Player ");
         arrNames.add("32 - More ");
         arrNames.add("33 - More info ");
+        arrNames.add("34 - Acceleration ");
 
 
 
@@ -482,6 +483,11 @@ public class ListLearn extends AppCompatActivity {
                 Intent iVideo = new Intent(ListLearn.this, VideoPlayer.class);
                 startActivity(iVideo);
             }
+
+            //else if ( i == 34){
+            //    Intent iSpeed = new Intent(ListLearn.this, OverSpeedWarning.class);
+            //    startActivity(iSpeed);
+           // }
 
         });
 

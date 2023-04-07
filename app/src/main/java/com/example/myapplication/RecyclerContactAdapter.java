@@ -46,6 +46,7 @@ public class RecyclerContactAdapter extends RecyclerView.Adapter<RecyclerContact
     }
 
 
+
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int Position) {
 
@@ -139,7 +140,6 @@ public class RecyclerContactAdapter extends RecyclerView.Adapter<RecyclerContact
             txtNumber = itemView.findViewById(R.id.txtNumber);
             imgContact = itemView.findViewById(R.id.imgContact);
             llView = itemView.findViewById(R.id.llView);
-
 
         }
     }

@@ -58,4 +58,7 @@
     <string name="pause">Pause</string>
     <string name="stop">Stop</string>
     <string name="play">Play</string>
+    <string name="prevAcceleration">Previous Acceleration</string>
+    <string name="CurrentAcceleration">Current Acceleration</string>
+    <string name="Acceleration">Acceleration</string>
 </resources>

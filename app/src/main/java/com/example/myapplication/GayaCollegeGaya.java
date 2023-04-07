@@ -15,7 +15,7 @@ public class GayaCollegeGaya extends AppCompatActivity {
     WebView gcg;
     ProgressBar pgBar;
 
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint({"MissingInflatedId", "SetJavaScriptEnabled"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +24,10 @@ public class GayaCollegeGaya extends AppCompatActivity {
         gcg = findViewById(R.id.gcg);
         pgBar = findViewById(R.id.pgBar);
 
-        gcg.loadUrl("https://www.gayacollege.ac.in/");
+         String pdf = "https://drive.google.com/file/d/1rtekW5L7D1Iup8VGr4AwvCcyGXXGnZfm/view?usp=sharing";
+
+        gcg.getSettings().setJavaScriptEnabled(true);
+        gcg.loadUrl("https://drive.google.com/file/d/1rtekW5L7D1Iup8VGr4AwvCcyGXXGnZfm/view?");
 
         gcg.setWebViewClient(new WebViewClient(){
             @Override
